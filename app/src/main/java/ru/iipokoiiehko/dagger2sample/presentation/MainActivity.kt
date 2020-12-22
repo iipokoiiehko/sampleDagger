@@ -2,6 +2,7 @@ package ru.iipokoiiehko.dagger2sample.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.AppNavigator
@@ -9,25 +10,24 @@ import ru.iipokoiiehko.dagger2sample.R
 import ru.iipokoiiehko.dagger2sample.SampleApplication
 import ru.iipokoiiehko.dagger2sample.navigation.BackPressListener
 import ru.iipokoiiehko.dagger2sample.navigation.Screens
+import ru.iipokoiiehko.dagger2sample.presentation.base.ArchBaseDiActivity
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : ArchBaseDiActivity<MainViewModel>(R.layout.activity_main) {
 
     @Inject
     lateinit var navigatorHolder: NavigatorHolder
 
-    @Inject
-    lateinit var router: Router
-
     private val navigator = AppNavigator(this, CONTAINER_ID)
 
+    private val viewModel by viewModels<MainViewModel> { viewModeFactory }
+    override fun inject() = SampleApplication.appComponent.inject(this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        SampleApplication.appComponent.inject(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         if (savedInstanceState == null) {
-            router.navigateTo(Screens.rootScreen())
+            viewModel.toRoot()
         }
     }
 

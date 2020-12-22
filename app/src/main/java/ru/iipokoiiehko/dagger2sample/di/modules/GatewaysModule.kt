@@ -1,5 +1,6 @@
 package ru.iipokoiiehko.dagger2sample.di.modules
 
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import ru.iipokoiiehko.dagger2sample.core.gateway.RickAndMortyGateway
@@ -9,13 +10,13 @@ import ru.iipokoiiehko.dagger2sample.data.api.starwars.gateway.StarWarsGatewayIm
 import javax.inject.Singleton
 
 @Module
-class InteractorsModule {
+interface GatewaysModule {
 
-    @Provides
+    @Binds
     @Singleton
-    fun provideRickAndMortyGateway(impl: RickAndMortyGatewayImpl): RickAndMortyGateway = impl
+    fun bindsRickAndMortyGateway(impl: RickAndMortyGatewayImpl): RickAndMortyGateway
 
-    @Provides
+    @Binds
     @Singleton
-    fun provideStarWarsGateway(impl: StarWarsGatewayImpl): StarWarsGateway = impl
+    fun bindsStarWarsGateway(impl: StarWarsGatewayImpl): StarWarsGateway
 }

@@ -10,7 +10,10 @@ import ru.iipokoiiehko.dagger2sample.di.modules.viewmodel.DaggerViewModelFactory
 import ru.iipokoiiehko.dagger2sample.presentation.startwars.StarWarsViewModel
 import javax.inject.Inject
 
-abstract class ArchBaseDiFragment<VM: ViewModel>(@LayoutRes contentLayoutId: Int) : BaseDiFragment(contentLayoutId) {
+abstract class ArchBaseDiFragment<VM : ViewModel>(
+    @LayoutRes
+    contentLayoutId: Int
+) : BaseDiFragment(contentLayoutId) {
 
     @Inject
     lateinit var viewModeFactory: DaggerViewModelFactory<VM>
