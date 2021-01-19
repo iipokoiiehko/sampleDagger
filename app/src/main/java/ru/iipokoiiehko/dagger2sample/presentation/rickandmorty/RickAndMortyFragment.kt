@@ -2,6 +2,7 @@ package ru.iipokoiiehko.dagger2sample.presentation.rickandmorty
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_rick_and_morty.*
@@ -13,10 +14,10 @@ import ru.iipokoiiehko.dagger2sample.presentation.base.ArchBaseDiFragment
 import ru.iipokoiiehko.dagger2sample.presentation.startwars.StarWarsViewModel
 import javax.inject.Inject
 
-class RickAndMortyFragment : ArchBaseDiFragment<RickAndMortyViewModel>(R.layout.fragment_rick_and_morty), BackPressListener {
+class RickAndMortyFragment :
+    ArchBaseDiFragment<RickAndMortyViewModel>(R.layout.fragment_rick_and_morty), BackPressListener {
 
     private val viewModel by viewModels<RickAndMortyViewModel> { viewModeFactory }
-
     private val adapter: RickAndMortyAdapter = RickAndMortyAdapter()
 
     override fun inject() = SampleApplication.appComponent.inject(this)
@@ -44,9 +45,14 @@ class RickAndMortyFragment : ArchBaseDiFragment<RickAndMortyViewModel>(R.layout.
             swipeRefresh.isRefreshing = it
         }
 
-        viewModel.error bindTo {
-
-        }
+        viewModel.error
+            .subscribe {
+                AlertDialog.Builder(requireContext())
+                    .setMessage(it.localizedMessage)
+                    .setPositiveButton(android.R.string.ok,null)
+                    .show()
+            }
+            .untilDestroyView()
     }
 
     private fun setupRecycler() {

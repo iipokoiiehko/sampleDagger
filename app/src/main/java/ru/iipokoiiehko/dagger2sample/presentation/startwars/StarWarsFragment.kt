@@ -2,6 +2,8 @@ package ru.iipokoiiehko.dagger2sample.presentation.startwars
 
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.fragment_star_wars.*
@@ -12,7 +14,8 @@ import ru.iipokoiiehko.dagger2sample.navigation.BackPressListener
 import ru.iipokoiiehko.dagger2sample.presentation.base.ArchBaseDiFragment
 import javax.inject.Inject
 
-class StarWarsFragment : ArchBaseDiFragment<StarWarsViewModel>(R.layout.fragment_star_wars), BackPressListener {
+class StarWarsFragment : ArchBaseDiFragment<StarWarsViewModel>(R.layout.fragment_star_wars),
+    BackPressListener {
 
     private val viewModel by viewModels<StarWarsViewModel> { viewModeFactory }
 
@@ -37,9 +40,14 @@ class StarWarsFragment : ArchBaseDiFragment<StarWarsViewModel>(R.layout.fragment
             swipeRefresh.isRefreshing = it
         }
 
-        viewModel.error bindTo {
-
-        }
+        viewModel.error
+            .subscribe {
+                AlertDialog.Builder(requireContext())
+                    .setMessage(it.localizedMessage)
+                    .setPositiveButton(android.R.string.ok,null)
+                    .show()
+            }
+            .untilDestroyView()
     }
 
     private fun setupListeners() {
