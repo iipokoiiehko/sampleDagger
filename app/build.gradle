@@ -59,9 +59,10 @@ dependencies {
     implementation("com.github.terrakok:cicerone:6.6")
     //Dagger
     implementation "com.google.dagger:dagger:2.30.1"
-    implementation "com.google.dagger:dagger-android-support:2.30.1"
     kapt "com.google.dagger:dagger-android-processor:2.30.1"
     kapt "com.google.dagger:dagger-compiler:2.30.1"
+    implementation 'com.google.dagger:dagger-android:2.30.1'
+    implementation 'com.google.dagger:dagger-android-support:2.30.1'
     //Timber
     implementation 'com.jakewharton.timber:timber:4.7.1'
     //ViewModel

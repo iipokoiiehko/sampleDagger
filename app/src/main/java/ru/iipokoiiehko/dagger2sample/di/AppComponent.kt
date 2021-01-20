@@ -1,29 +1,26 @@
 package ru.iipokoiiehko.dagger2sample.di
 
 import dagger.Component
+import dagger.android.AndroidInjectionModule
+import dagger.android.AndroidInjector
+import ru.iipokoiiehko.dagger2sample.SampleApplication
 import ru.iipokoiiehko.dagger2sample.di.modules.CiceroneModule
 import ru.iipokoiiehko.dagger2sample.di.modules.GatewaysModule
+import ru.iipokoiiehko.dagger2sample.di.modules.UIModule
 import ru.iipokoiiehko.dagger2sample.di.modules.network.NetworkModule
-import ru.iipokoiiehko.dagger2sample.presentation.MainActivity
-import ru.iipokoiiehko.dagger2sample.presentation.rickandmorty.RickAndMortyFragment
-import ru.iipokoiiehko.dagger2sample.presentation.root.RootFragment
-import ru.iipokoiiehko.dagger2sample.presentation.startwars.StarWarsFragment
 import javax.inject.Singleton
 
 @Singleton
 @Component(
     modules = [
+        AndroidInjectionModule::class,
         CiceroneModule::class,
         GatewaysModule::class,
-        NetworkModule::class
+        NetworkModule::class,
+        UIModule::class
     ]
 )
-interface AppComponent {
-
-    fun inject(activity: MainActivity)
-    fun inject(fragment: RootFragment)
-    fun inject(fragment: RickAndMortyFragment)
-    fun inject(fragment: StarWarsFragment)
+interface AppComponent : AndroidInjector<SampleApplication> {
 
     class Initializer private constructor() {
 

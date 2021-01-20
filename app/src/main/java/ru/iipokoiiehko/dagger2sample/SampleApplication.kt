@@ -1,10 +1,11 @@
 package ru.iipokoiiehko.dagger2sample
 
-import android.app.Application
+import dagger.android.AndroidInjector
+import dagger.android.DaggerApplication
 import ru.iipokoiiehko.dagger2sample.di.AppComponent
 import timber.log.Timber
 
-class SampleApplication : Application() {
+class SampleApplication : DaggerApplication() {
 
     override fun onCreate() {
         super.onCreate()
@@ -12,12 +13,11 @@ class SampleApplication : Application() {
         setupTimber()
     }
 
-    private fun setupTimber() {
-        Timber.plant(Timber.DebugTree())
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+        return AppComponent.Initializer.init()
     }
 
-    companion object {
-
-        val appComponent = AppComponent.Initializer.init()
+    private fun setupTimber() {
+        Timber.plant(Timber.DebugTree())
     }
 }
