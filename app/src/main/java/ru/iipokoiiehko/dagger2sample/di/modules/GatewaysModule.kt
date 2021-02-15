@@ -2,7 +2,8 @@ package ru.iipokoiiehko.dagger2sample.di.modules
 
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import ru.iipokoiiehko.dagger2sample.core.gateway.RickAndMortyGateway
 import ru.iipokoiiehko.dagger2sample.core.gateway.StarWarsGateway
 import ru.iipokoiiehko.dagger2sample.data.api.rickandmorty.gateway.RickAndMortyGatewayImpl
@@ -10,6 +11,7 @@ import ru.iipokoiiehko.dagger2sample.data.api.starwars.gateway.StarWarsGatewayIm
 import javax.inject.Singleton
 
 @Module
+@InstallIn(SingletonComponent::class)
 interface GatewaysModule {
 
     @Binds

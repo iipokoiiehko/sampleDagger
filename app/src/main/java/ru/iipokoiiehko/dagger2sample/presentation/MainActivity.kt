@@ -1,18 +1,16 @@
 package ru.iipokoiiehko.dagger2sample.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.github.terrakok.cicerone.NavigatorHolder
-import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.AppNavigator
+import dagger.hilt.android.AndroidEntryPoint
 import ru.iipokoiiehko.dagger2sample.R
-import ru.iipokoiiehko.dagger2sample.SampleApplication
 import ru.iipokoiiehko.dagger2sample.navigation.BackPressListener
-import ru.iipokoiiehko.dagger2sample.navigation.Screens
 import ru.iipokoiiehko.dagger2sample.presentation.base.ArchBaseDiActivity
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ArchBaseDiActivity<MainViewModel>(R.layout.activity_main) {
 
     @Inject
@@ -21,7 +19,6 @@ class MainActivity : ArchBaseDiActivity<MainViewModel>(R.layout.activity_main) {
     private val navigator = AppNavigator(this, CONTAINER_ID)
 
     private val viewModel by viewModels<MainViewModel> { viewModeFactory }
-    override fun inject() = SampleApplication.appComponent.inject(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

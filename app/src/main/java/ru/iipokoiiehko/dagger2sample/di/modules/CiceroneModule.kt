@@ -1,13 +1,15 @@
 package ru.iipokoiiehko.dagger2sample.di.modules
 
-import com.github.terrakok.cicerone.BaseRouter
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.Router
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
+@InstallIn(SingletonComponent::class)
 class CiceroneModule {
 
     @Provides

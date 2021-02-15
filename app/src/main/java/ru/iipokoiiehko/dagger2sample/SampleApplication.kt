@@ -1,9 +1,10 @@
 package ru.iipokoiiehko.dagger2sample
 
 import android.app.Application
-import ru.iipokoiiehko.dagger2sample.di.AppComponent
+import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
+@HiltAndroidApp
 class SampleApplication : Application() {
 
     override fun onCreate() {
@@ -14,10 +15,5 @@ class SampleApplication : Application() {
 
     private fun setupTimber() {
         Timber.plant(Timber.DebugTree())
-    }
-
-    companion object {
-
-        val appComponent = AppComponent.Initializer.init()
     }
 }

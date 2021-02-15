@@ -7,12 +7,4 @@ import androidx.appcompat.app.AppCompatActivity
 abstract class BaseDiActivity(
     @LayoutRes
     contentLayoutId: Int
-): AppCompatActivity(contentLayoutId) {
-
-    abstract fun inject()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        inject()
-        super.onCreate(savedInstanceState)
-    }
-}
+): AppCompatActivity(contentLayoutId)

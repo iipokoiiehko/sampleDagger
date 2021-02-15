@@ -14,10 +14,7 @@ abstract class BaseDiFragment(@LayoutRes contentLayoutId: Int) : Fragment(conten
 
     private val compositeDisposable = CompositeDisposable()
 
-    abstract fun inject()
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        inject()
         super.onViewCreated(view, savedInstanceState)
     }
 

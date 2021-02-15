@@ -2,18 +2,20 @@ package ru.iipokoiiehko.dagger2sample.di.modules.network
 
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import ru.iipokoiiehko.dagger2sample.data.api.rickandmorty.RickAndMortyWebApi
 import ru.iipokoiiehko.dagger2sample.data.api.starwars.StarWarsWebApi
 import ru.iipokoiiehko.dagger2sample.di.StarWars
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
+@InstallIn(SingletonComponent::class)
 class StarWarsNetworkModule {
 
     @Provides
