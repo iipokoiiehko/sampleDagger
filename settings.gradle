@@ -1,2 +1,9 @@
+include ':rickandmorty-feature'
+include ':rickandmorty-api'
+include ':main-core-ui'
+include ':starwars-feature'
+include ':main-core-api'
+include ':starwars-api'
+include ':main-core'
 include ':app'
 rootProject.name = "Dagger2Sample"

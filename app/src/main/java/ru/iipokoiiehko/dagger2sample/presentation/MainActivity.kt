@@ -1,16 +1,12 @@
 package ru.iipokoiiehko.dagger2sample.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.github.terrakok.cicerone.NavigatorHolder
-import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import ru.iipokoiiehko.dagger2sample.R
-import ru.iipokoiiehko.dagger2sample.SampleApplication
-import ru.iipokoiiehko.dagger2sample.navigation.BackPressListener
-import ru.iipokoiiehko.dagger2sample.navigation.Screens
-import ru.iipokoiiehko.dagger2sample.presentation.base.ArchBaseDiActivity
+import ru.iipokoiiehko.dagger2sample.di.MainScreenComponent
+import ru.iipokoiiehko.main_core_ui.ArchBaseDiActivity
 import javax.inject.Inject
 
 class MainActivity : ArchBaseDiActivity<MainViewModel>(R.layout.activity_main) {
@@ -21,7 +17,14 @@ class MainActivity : ArchBaseDiActivity<MainViewModel>(R.layout.activity_main) {
     private val navigator = AppNavigator(this, CONTAINER_ID)
 
     private val viewModel by viewModels<MainViewModel> { viewModeFactory }
-    override fun inject() = SampleApplication.appComponent.inject(this)
+
+    val mainScreenComponent by lazy {
+        MainScreenComponent.Initializer
+            .init()
+    }
+
+    override fun inject() = mainScreenComponent
+        .inject(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +46,7 @@ class MainActivity : ArchBaseDiActivity<MainViewModel>(R.layout.activity_main) {
 
     override fun onBackPressed() {
         val fragment = supportFragmentManager.findFragmentById(CONTAINER_ID)
-        if (fragment != null && fragment is BackPressListener && fragment.onBackPressed()) {
+        if (fragment != null && fragment is ru.iipokoiiehko.main_core.BackPressListener && fragment.onBackPressed()) {
             return
         }
 

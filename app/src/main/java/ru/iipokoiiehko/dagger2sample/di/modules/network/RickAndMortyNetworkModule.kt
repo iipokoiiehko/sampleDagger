@@ -5,14 +5,13 @@ import dagger.Provides
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import okhttp3.logging.HttpLoggingInterceptor.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import ru.iipokoiiehko.dagger2sample.data.api.rickandmorty.RickAndMortyWebApi
 import ru.iipokoiiehko.dagger2sample.di.RickAndMorty
 import ru.iipokoiiehko.dagger2sample.di.modules.network.NetworkModule.Companion.CONNECT_TIMEOUT
 import ru.iipokoiiehko.dagger2sample.di.modules.network.NetworkModule.Companion.READ_TIMEOUT
 import ru.iipokoiiehko.dagger2sample.di.modules.network.NetworkModule.Companion.WRITE_TIMEOUT
+import ru.iipokoiiehko.rickandmorty_api.RickAndMortyWebApi
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -41,7 +40,7 @@ class RickAndMortyNetworkModule {
     fun provideRickAndMortyRetrofitApi(
         @RickAndMorty
         okHttpClient: OkHttpClient
-    ) = Retrofit.Builder()
+    ): RickAndMortyWebApi = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .client(okHttpClient)
         .addCallAdapterFactory(RxJava3CallAdapterFactory.create())

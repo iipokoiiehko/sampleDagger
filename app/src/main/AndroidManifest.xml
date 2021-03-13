@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.Dagger2Sample">
+        android:theme="@style/Theme.Dagger2Sample"
+        android:name="ru.iipokoiiehko.dagger2sample.SampleApplication">
         <activity android:name=".presentation.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

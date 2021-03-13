@@ -13,6 +13,13 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/main-core" />
+            <option value="$PROJECT_DIR$/main-core-api" />
+            <option value="$PROJECT_DIR$/main-core-ui" />
+            <option value="$PROJECT_DIR$/rickandmorty-api" />
+            <option value="$PROJECT_DIR$/rickandmorty-feature" />
+            <option value="$PROJECT_DIR$/starwars-api" />
+            <option value="$PROJECT_DIR$/starwars-feature" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

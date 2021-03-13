@@ -2,11 +2,10 @@ package ru.iipokoiiehko.dagger2sample.di.modules
 
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
-import ru.iipokoiiehko.dagger2sample.core.gateway.RickAndMortyGateway
-import ru.iipokoiiehko.dagger2sample.core.gateway.StarWarsGateway
-import ru.iipokoiiehko.dagger2sample.data.api.rickandmorty.gateway.RickAndMortyGatewayImpl
-import ru.iipokoiiehko.dagger2sample.data.api.starwars.gateway.StarWarsGatewayImpl
+import ru.iipokoiiehko.rickandmorty_api.gateway.RickAndMortyGatewayImpl
+import ru.iipokoiiehko.main_core.gateways.RickAndMortyGateway
+import ru.iipokoiiehko.starwars_api.gateway.StarWarsGatewayImpl
+import ru.iipokoiiehko.main_core.gateways.StarWarsGateway
 import javax.inject.Singleton
 
 @Module

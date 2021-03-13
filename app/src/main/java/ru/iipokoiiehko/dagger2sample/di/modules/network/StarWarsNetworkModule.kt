@@ -7,9 +7,8 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import ru.iipokoiiehko.dagger2sample.data.api.rickandmorty.RickAndMortyWebApi
-import ru.iipokoiiehko.dagger2sample.data.api.starwars.StarWarsWebApi
 import ru.iipokoiiehko.dagger2sample.di.StarWars
+import ru.iipokoiiehko.starwars_api.StarWarsWebApi
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -34,7 +33,7 @@ class StarWarsNetworkModule {
     fun provideRickAndMortyRetrofitApi(
         @StarWars
         okHttpClient: OkHttpClient
-    ) = Retrofit.Builder()
+    ): StarWarsWebApi = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .client(okHttpClient)
         .addCallAdapterFactory(RxJava3CallAdapterFactory.create())

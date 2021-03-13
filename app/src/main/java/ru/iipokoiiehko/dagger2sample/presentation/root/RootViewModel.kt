@@ -2,7 +2,7 @@ package ru.iipokoiiehko.dagger2sample.presentation.root
 
 import com.github.terrakok.cicerone.Router
 import ru.iipokoiiehko.dagger2sample.navigation.Screens
-import ru.iipokoiiehko.dagger2sample.presentation.base.BaseViewModel
+import ru.iipokoiiehko.main_core_ui.BaseViewModel
 import javax.inject.Inject
 
 class RootViewModel @Inject constructor(
