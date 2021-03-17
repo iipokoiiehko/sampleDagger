@@ -5,7 +5,7 @@ import com.jakewharton.rxrelay3.PublishRelay
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import ru.iipokoiiehko.rickandmorty_feature.interactors.RickAndMortyInteractor
 import ru.iipokoiiehko.main_core.models.Character
-import ru.iipokoiiehko.dagger2sample.presentation.utils.onLoading
+import ru.iipokoiiehko.main_core_ui.utils.onLoading
 import ru.iipokoiiehko.main_core_ui.BaseViewModel
 import javax.inject.Inject
 

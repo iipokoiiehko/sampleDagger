@@ -1,4 +1,4 @@
-package ru.iipokoiiehko.dagger2sample.presentation.utils
+package ru.iipokoiiehko.main_core_ui.utils
 
 import android.view.LayoutInflater
 import android.view.View

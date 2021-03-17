@@ -3,7 +3,7 @@ package ru.iipokoiiehko.starwars_feature.screen
 import androidx.lifecycle.MutableLiveData
 import com.jakewharton.rxrelay3.BehaviorRelay
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import ru.iipokoiiehko.dagger2sample.presentation.utils.onLoading
+import ru.iipokoiiehko.main_core_ui.utils.onLoading
 import ru.iipokoiiehko.main_core.models.BasePeople
 import ru.iipokoiiehko.main_core_ui.BaseViewModel
 import ru.iipokoiiehko.starwars_feature.interactors.StartWarsInteractor

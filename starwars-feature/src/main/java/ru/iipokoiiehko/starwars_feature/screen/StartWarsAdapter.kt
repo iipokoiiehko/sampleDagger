@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.list_item_star_wars.view.*
-import ru.iipokoiiehko.dagger2sample.presentation.utils.inflate
+import ru.iipokoiiehko.main_core_ui.utils.inflate
 import ru.iipokoiiehko.starwars_feature.R
 
 class StartWarsAdapter :
